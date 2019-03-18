@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Understanding JavaScript's Capture</title>
+</head>
+<body class="bod">
+
+  <div class="one">
+    <div class="two">
+      <div class="three">
+          <h1>CLICK ME!</h1>
+      </div>
+    </div>
+  </div>
+
+<style>
+  html {
+    box-sizing: border-box;
+  }
+  
+  *, *:before, *:after { 
+    box-sizing: inherit; 
+  }
+
+  div {
+    width: 100%;
+    padding: 100px;
+  }
+
+  .one {
+    background: rgb(61, 224, 143);
+  }
+
+  .two {
+    background: rgb(88, 11, 88);
+  }
+
+  .three {
+    background: coral;
+  }
+
+  h1
+  {
+      color: rgb(70, 14, 70);
+  }
+</style>
+
+<button></button>
+<script>
+    const divs=document.querySelectorAll('div');
+    //const bodd=document.querySelector('.bod');
+    function logText(e)
+    {
+        console.log(this.classList.value);
+        e.stopPropagation();
+    }
+
+//bodd.addEventListener('click',logText);
+
+    divs.forEach(div=>div.addEventListener('click',logText,{
+        capture:true
+    }));
+</script>
+</body>
+</html>
